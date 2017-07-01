@@ -13,21 +13,16 @@ it('must contain two buttons', () => {
   expect(note.find('button').length).toBe(2);
 });
 
-it('contains a close button with value X', () => {
+it('contains a close button with fa-close', () => {
   const note = shallow(<Note/>);
   var closeBtn = note.find('button.Btn-close');
-
-  expect(closeBtn.text().trim()).toEqual('X');
+  expect(closeBtn.find("i.fa-close")).toBeDefined();
 });
 
 it('contains an edit button', () => {
-  const note = shallow(
-    <Note>Hello</Note>
-  );
-
-  var editBtn = note.find('button.Btn-edit');
-
-  expect(editBtn.text().trim()).toEqual('Edit');
+  const note = shallow(<Note/>);
+  var editBtn = note.find('button.btn-edit');
+  expect(editBtn.find("i.fa-pencil")).toBeDefined();
 });
 
 it('contains a note with a text value Hello when provided with a value Hello', () => {
