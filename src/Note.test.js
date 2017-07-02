@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme';
-import Note from './Note';
+import {Note} from './Note';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
