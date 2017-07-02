@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Note.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
 
-var Note = React.createClass({
+export class Note extends Component{
+    constructor(){
+        super();
+        this.state = {
+            value: null,
+        };
+    }
     edit() {
         alert("Editing Note")
-    },
+    }
     remove() {
         alert("Removing Note")
-    },
+    }
     render() {
         return ( 
         <div className="note">
@@ -24,8 +30,6 @@ var Note = React.createClass({
             <p > {this.props.children} </p> 
              
         </div>
-        )
+        );
     }
-})
-
-export default Note;
+}
