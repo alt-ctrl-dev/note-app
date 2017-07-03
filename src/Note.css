@@ -3,7 +3,11 @@
 div.note {
   height: 150px;
   width: 150px;
-  background-color: yellow;
+  background: rgb(239, 221, 105); /* Old browsers */
+  background: -webkit-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
+  background: -moz-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
+  background: -o-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
+  background: linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   margin: 2px 0;
   position: absolute;
   cursor: -webkit-grab;
@@ -25,6 +29,7 @@ div.note-controls {
   justify-content: flex-end;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   position: relative;
+  background: #efdd69;
 }
 
 div.note-controls > span {
