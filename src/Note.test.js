@@ -25,7 +25,14 @@ it('contains an edit button', () => {
   expect(editBtn.find("i.fa-pencil")).toBeDefined();
 });
 
-it('contains a note with a text value Hello when provided with a value Hello', () => {
+it('contains a save button after selecting the edit button', () => {
+  const note = shallow(<Note/>);
+  note.find('button.btn-edit').simulate('click');
+  var saveBtn = note.find('button.btn-save')
+  expect(saveBtn.find("i.fa-check")).toBeDefined();
+});
+
+it('contains a note without a text value Hello when provided with a value Hello', () => {
   const note = shallow(
     <Note>Hello</Note>
   );
