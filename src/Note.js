@@ -6,16 +6,19 @@ export class Note extends Component{
     constructor(){
         super();
         this.state = {
-            note: ""
+            note: "",
+            editing: false
         };
     }
     edit() {
+        this.setState({editing: true})
         alert("Editing Note")
     }
     remove() {
         alert("Removing Note")
     }
     save() {
+         this.setState({editing: false})
          alert("Saving Note")
     }
     renderEditNote() {
@@ -48,6 +51,7 @@ export class Note extends Component{
         );
     }
     render() {
-        return this.renderEditNote()
+        return (this.state.editing) ? this.renderEditNote()
+                                          : this.renderDisplayNote()
     }
 }
