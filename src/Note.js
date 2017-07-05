@@ -9,6 +9,8 @@ export class Note extends Component{
             note: "",
             editing: false
         };
+        this.edit=this.edit.bind(this);
+        this.save=this.save.bind(this);
     }
     edit() {
         this.setState({editing: true})
