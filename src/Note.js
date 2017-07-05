@@ -6,7 +6,7 @@ export class Note extends Component{
     constructor(){
         super();
         this.state = {
-            value: null,
+            note: ""
         };
     }
     edit() {
@@ -15,7 +15,22 @@ export class Note extends Component{
     remove() {
         alert("Removing Note")
     }
-    render() {
+    save() {
+         alert("Saving Note")
+    }
+    renderEditNote() {
+        return ( 
+            <div className="note">
+                <div className="note-controls">
+                    <span className="save-span">
+                        <button className="btn-save" onClick = {this.save}> <i className="fa fa-check" aria-hidden="true"></i> </button>
+                    </span>
+                </div>
+                <textarea></textarea>
+            </div>
+        );
+    }
+    renderDisplayNote() {
         return ( 
         <div className="note">
             <div className="note-controls">
@@ -31,5 +46,8 @@ export class Note extends Component{
              
         </div>
         );
+    }
+    render() {
+        return this.renderEditNote()
     }
 }

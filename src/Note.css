@@ -2,7 +2,7 @@
 
 div.note {
   height: 150px;
-  width: 150px;
+  min-width: 150px;
   background: rgb(239, 221, 105); /* Old browsers */
   background: -webkit-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
   background: -moz-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
@@ -48,4 +48,19 @@ div.note-controls button {
   margin: 2px;
   background: transparent;
   border: 0;
+}
+
+div.note > textarea {
+  height: 125px;
+  width: 150px;
+  max-height: 125px;
+  max-width: 150px;
+  background: transparent;
+  font-size: 22px;
+  font-family: "Shadows Into Light", Arial;
+
+}
+
+div.note > textarea:focus {
+  outline: transparent;
 }
