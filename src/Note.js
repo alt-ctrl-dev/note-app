@@ -14,14 +14,15 @@ export class Note extends Component{
     }
     edit() {
         this.setState({editing: true})
-        alert("Editing Note")
     }
     remove() {
         alert("Removing Note")
     }
     save() {
-         this.setState({editing: false})
-         alert("Saving Note")
+         this.setState({
+             editing: false,
+             note:this.refs.notetext.value
+        })
     }
     renderEditNote() {
         return ( 
@@ -31,7 +32,7 @@ export class Note extends Component{
                         <button className="btn-save" onClick = {this.save}> <i className="fa fa-check" aria-hidden="true"></i> </button>
                     </span>
                 </div>
-                <textarea></textarea>
+                <textarea defaultValue={this.state.note} ref="notetext" rows={4} cols={15}></textarea>
             </div>
         );
     }
@@ -47,7 +48,7 @@ export class Note extends Component{
                 </span> 
             </div>
             
-            <p > {this.props.children} </p> 
+            <p > {this.state.note} </p> 
              
         </div>
         );
