@@ -3,10 +3,10 @@ import './Note.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
 
 export class Note extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            note: "",
+            note:props.children,
             editing: false
         };
         this.edit=this.edit.bind(this);
@@ -48,7 +48,7 @@ export class Note extends Component{
                 </span> 
             </div>
             
-            <p > {this.state.note} </p> 
+            <p > { this.state.note } </p> 
              
         </div>
         );
