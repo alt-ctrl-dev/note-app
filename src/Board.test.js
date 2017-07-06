@@ -38,8 +38,7 @@ it('throws an error when count is greater than 100', () => {
 
 it('must contain a + button', () => {
     const board = render(<Board/>);
-    var addBtn = board.find('button.Btn-close');
-    console.log(addBtn)
+    var addBtn = board.find('.btn-add');
     expect(addBtn).toHaveLength(1);
     expect(addBtn.find("i.fa-plus")).toBeDefined();
 });
