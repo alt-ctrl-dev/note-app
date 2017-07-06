@@ -46,30 +46,30 @@ it('contains a note with a text value Hello when provided with a value Hello', (
   expect(note.find('p').text().trim()).toEqual('Hello');
 });
 
-it('should save a note a text value Hi after hitting save', () => {
-  var AppElement = ReactTestUtils.renderIntoDocument( <Note>Hello</Note> );
-  var DomElement = ReactDOM.findDOMNode(AppElement);
+// it('should save a note a text value Hi after hitting save', () => {
+//   var AppElement = ReactTestUtils.renderIntoDocument( <Note>Hello</Note> );
+//   var DomElement = ReactDOM.findDOMNode(AppElement);
   
-  expect(DomElement.getElementsByTagName("p")).toHaveLength(1);
-  expect(DomElement.getElementsByTagName("p")[0].innerHTML.trim()).toEqual(expect.stringContaining('Hello'));
+//   expect(DomElement.getElementsByTagName("p")).toHaveLength(1);
+//   expect(DomElement.getElementsByTagName("p")[0].innerHTML.trim()).toEqual(expect.stringContaining('Hello'));
 
-  expect(DomElement.getElementsByClassName("btn-edit")).toHaveLength(1);
-  var editBtn = DomElement.getElementsByClassName("btn-edit")[0]
-  ReactTestUtils.Simulate.click(editBtn);
+//   expect(DomElement.getElementsByClassName("btn-edit")).toHaveLength(1);
+//   var editBtn = DomElement.getElementsByClassName("btn-edit")[0]
+//   ReactTestUtils.Simulate.click(editBtn);
 
-  expect(DomElement.getElementsByTagName("textarea")).toHaveLength(1);
-  var textarea = DomElement.getElementsByTagName("textarea")[0]
-  expect(textarea.value.trim()).toEqual('Hello');
-  textarea.value="Hi"
-  ReactTestUtils.Simulate.change(textarea);
-  expect(textarea.value.trim()).toEqual('Hi');
-
-
-  expect(DomElement.getElementsByClassName("btn-save")).toHaveLength(1);
-  var saveBtn = DomElement.getElementsByClassName("btn-save")[0]
-  ReactTestUtils.Simulate.click(saveBtn);
+//   expect(DomElement.getElementsByTagName("textarea")).toHaveLength(1);
+//   var textarea = DomElement.getElementsByTagName("textarea")[0]
+//   expect(textarea.value.trim()).toEqual('Hello');
+//   textarea.value="Hi"
+//   ReactTestUtils.Simulate.change(textarea);
+//   expect(textarea.value.trim()).toEqual('Hi');
 
 
-  expect(DomElement.getElementsByTagName("p")).toHaveLength(1);
-  expect(DomElement.getElementsByTagName("p")[0].innerHTML.trim()).toEqual(expect.stringContaining('Hi'));
-});
+//   expect(DomElement.getElementsByClassName("btn-save")).toHaveLength(1);
+//   var saveBtn = DomElement.getElementsByClassName("btn-save")[0]
+//   ReactTestUtils.Simulate.click(saveBtn);
+
+
+//   expect(DomElement.getElementsByTagName("p")).toHaveLength(1);
+//   expect(DomElement.getElementsByTagName("p")[0].innerHTML.trim()).toEqual(expect.stringContaining('Hi'));
+// });
