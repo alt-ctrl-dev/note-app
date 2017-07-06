@@ -7,7 +7,7 @@ div.note {
   background: -o-linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%);
   background: linear-gradient(rgb(254, 252, 234) 0%, rgb(239, 221, 105) 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   margin: 2px 0;
-  position: relative;
+  position: absolute;
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
   overflow: hidden;
   max-width: 150px;
