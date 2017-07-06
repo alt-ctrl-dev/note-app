@@ -6,23 +6,21 @@ export class Note extends Component{
     constructor(props){
         super(props);
         this.state = {
-            note:props.children,
             editing: false
         };
         this.edit=this.edit.bind(this);
         this.save=this.save.bind(this);
+        this.remove=this.remove.bind(this);
     }
     edit() {
-        this.setState({editing: true})
+        this.setState({ editing: true })
     }
     remove() {
-        alert("Removing Note")
+        this.props.onRemove(this.props.id)
     }
     save() {
-         this.setState({
-             editing: false,
-             note:this.refs.notetext.value
-        })
+        this.props.onChange(this.refs.notetext.value, this.props.id)
+        this.setState({ editing: false })
     }
     renderEditNote() {
         return ( 
@@ -48,7 +46,7 @@ export class Note extends Component{
                 </span> 
             </div>
             
-            <p > { this.state.note } </p> 
+            <p > { this.props.children } </p> 
              
         </div>
         );
