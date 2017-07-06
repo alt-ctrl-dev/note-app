@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow,mount} from 'enzyme';
 import {Note} from './Note';
+import ReactTestUtils from 'react-dom/test-utils'; 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -51,9 +52,10 @@ it('should save a note a text value Hi after hitting save', () => {
   expect(note.find("i.fa-check")).toBeDefined();
 
   expect(note.find('.note > textarea')).toBeDefined();
-  // note.find('.note > textarea').simulate('keydown', { key: 'H' })
-  // note.find('.note > textarea').simulate('keydown', { key: 'i' })
+  const notetext = note.find('.note > textarea').root.node.refs.notetext
+  notetext.value = 'Hi';
+  ReactTestUtils.Simulate.change(notetext);
 
   note.find('button.btn-save').simulate('click');
-  expect(note.find('p').text().trim()).toEqual('Hello');
+  expect(note.find('p').text().trim()).toEqual('Hi');
 });
