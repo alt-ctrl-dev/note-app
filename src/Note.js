@@ -18,12 +18,6 @@ export class Note extends Component{
             top: this.randomBetween(0, window.innerHeight -150, 'px')
         }
     }
-    componentDidUpdate() {
-        if (this.state.editing) {
-            this.refs.notetext.focus()
-            this.refs.notetext.select()
-        }
-    }
     shouldComponentUpdate(nextProps, nextState) {
         return this.props.children !== nextProps.children || this.state !== nextState
     }
