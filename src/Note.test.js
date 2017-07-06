@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {shallow,mount} from 'enzyme';
+import {render} from 'enzyme';
 import {Note} from './Note';
 import ReactTestUtils from 'react-dom/test-utils'; 
 
@@ -10,31 +10,34 @@ it('renders without crashing', () => {
 });
 
 it('must contain two buttons', () => {
-  const note = shallow(<Note/>);
+  const note = render(<Note/>);
   expect(note.find('button').length).toBe(2);
 });
 
 it('contains a close button with fa-close', () => {
-  const note = shallow(<Note/>);
+  const note = render(<Note/>);
   var closeBtn = note.find('button.Btn-close');
+  expect(closeBtn).toHaveLength(1);
   expect(closeBtn.find("i.fa-close")).toBeDefined();
 });
 
 it('contains an edit button', () => {
-  const note = shallow(<Note/>);
+  const note = render(<Note/>);
   var editBtn = note.find('button.btn-edit');
+  expect(editBtn).toHaveLength(1);
   expect(editBtn.find("i.fa-pencil")).toBeDefined();
 });
 
 it('contains a save button after selecting the edit button', () => {
-  const note = shallow(<Note/>);
+  const note = render(<Note/>);
   note.find('button.btn-edit').simulate('click');
   var saveBtn = note.find('button.btn-save')
+  expect(editBtn).toHaveLength(1);
   expect(saveBtn.find("i.fa-check")).toBeDefined();
 });
 
 it('contains a note with a text value Hello when provided with a value Hello', () => {
-  const note = shallow(
+  const note = render(
     <Note>Hello</Note>
   );
 
@@ -42,7 +45,7 @@ it('contains a note with a text value Hello when provided with a value Hello', (
 });
 
 it('should save a note a text value Hi after hitting save', () => {
-  const note = mount(
+  const note = render(
     <Note>Hello</Note>
   );
   expect(note.find('p').text().trim()).toEqual('Hello');
