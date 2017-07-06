@@ -6,27 +6,39 @@ export class Note extends Component{
     constructor(props){
         super(props);
         this.state = {
-            note:props.children,
             editing: false
         };
         this.edit=this.edit.bind(this);
         this.save=this.save.bind(this);
+        this.remove=this.remove.bind(this);
     }
+    componentWillMount() {
+        this.style = {
+            right: this.randomBetween(0, window.innerWidth - 150, 'px'),
+            top: this.randomBetween(0, window.innerHeight -150, 'px')
+        }
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.children !== nextProps.children || this.state !== nextState
+    }
+    randomBetween(x, y, s) {
+        return (x + Math.ceil(Math.random() * (y-x))) + s
+    }
+
     edit() {
-        this.setState({editing: true})
+        this.setState({ editing: true })
     }
     remove() {
-        alert("Removing Note")
+        this.props.onRemove(this.props.id)
     }
     save() {
-         this.setState({
-             editing: false,
-             note:this.refs.notetext.value
-        })
+        this.props.onChange(this.refs.notetext.value, this.props.id)
+        this.setState({ editing: false })
     }
     renderEditNote() {
         return ( 
-            <div className="note">
+            <div className="note" 
+                         style={this.style}>
                 <div className="note-controls">
                     <span className="save-span">
                         <button className="btn-save" onClick = {this.save}> <i className="fa fa-check" aria-hidden="true"></i> </button>
@@ -38,7 +50,8 @@ export class Note extends Component{
     }
     renderDisplayNote() {
         return ( 
-        <div className="note">
+        <div className="note" 
+                         style={this.style}>
             <div className="note-controls">
                 <span className="edit-span">
                     <button className="btn-edit" onClick = {this.edit}> <i className="fa fa-pencil" aria-hidden="true"></i> </button>
@@ -48,7 +61,7 @@ export class Note extends Component{
                 </span> 
             </div>
             
-            <p > { this.state.note } </p> 
+            <p > { this.props.children } </p> 
              
         </div>
         );

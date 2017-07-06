@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils'; 
 import {Board} from './Board';
 import renderer from 'react-test-renderer';
-import {shallow,mount} from 'enzyme';
+import {render} from 'enzyme';
 
 beforeAll(() => {
   console.error = (error) => {
@@ -37,8 +37,8 @@ it('throws an error when count is greater than 100', () => {
 });
 
 it('must contain a + button', () => {
-    const board = shallow(<Board/>);
-    var addBtn = board.find('button.Btn-close');
-    expect(addBtn).toBeDefined();
+    const board = render(<Board/>);
+    var addBtn = board.find('.btn-add');
+    expect(addBtn).toHaveLength(1);
     expect(addBtn.find("i.fa-plus")).toBeDefined();
 });
