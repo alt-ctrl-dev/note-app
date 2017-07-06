@@ -10,5 +10,12 @@ div.board {
   bottom: 20px;
   right: 20px;
   font-size: 0.75em;
-  border-radius: 50%
+  border-radius: 50%;
+  border: 0px;  
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+}
+
+
+.board > .btn-add:focus {
+  outline: transparent;
 }
