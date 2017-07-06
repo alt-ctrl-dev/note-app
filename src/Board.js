@@ -18,6 +18,7 @@ export class Board extends Component{
         this.eachNote = this.eachNote.bind(this)
         this.update = this.update.bind(this)
         this.remove = this.remove.bind(this)
+        this.add = this.add.bind(this)
     }
     update(newText, id) {
         var notes = this.state.notes.map(
@@ -35,8 +36,18 @@ export class Board extends Component{
         this.setState({notes})
     }
     nextId() {
-        this.uniqueId = this.uniqueId || 0
+        this.uniqueId = this.uniqueId || this.state.notes.length || 0
         return this.uniqueId++
+    }
+    add(text) {
+        var notes = [
+            ...this.state.notes,
+            {
+                id: this.nextId(),
+                note: text
+            }
+        ]
+        this.setState({notes})
     }
     eachNote(note) {
         return (<Note key={note.id}
@@ -50,7 +61,7 @@ export class Board extends Component{
         return (
             <div className='board'>
                 {this.state.notes.map(this.eachNote)}
-                <button  className="btn-add btn btn-default" >
+                <button disabled={this.state.notes.length>=this.props.count} onClick={() => this.add('New Note')} className="btn-add btn btn-default" >
                     <i className="fa fa-plus fa-5x" aria-hidden="true" />
                 </button>
             </div>
@@ -59,7 +70,7 @@ export class Board extends Component{
 }
 
 Board.defaultProps = {
-  count: 10
+  count: 20
 };
 
 Board.propTypes = {
@@ -69,8 +80,8 @@ Board.propTypes = {
         return new Error(`${propName} must be a number`)
     } 
 
-    if(props[propName] > 100) {
-        return new Error('Creating ' + props[propName] + ' notes is ridiculous')
+    if(props[propName] > 50) {
+        return new Error(componentName + ' - Creating ' + props[propName] + ' notes is ridiculous')
     }
   }
 };
